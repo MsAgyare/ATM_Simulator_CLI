@@ -9,7 +9,9 @@ user_card_number= input("Enter the last 4 digits of your card number here:\n")
 # ask user to enter pin
 user_card_pin = int(input("Enter atm pin here:\n"))
 
-# current_balance = 
+# store user's current balance
+current_balance = 10000.00
+
 #authenticate user's pin
 def pin_authentication(pin):
     user_card_pin = int(input("Enter atm pin here:\n"))
@@ -24,11 +26,20 @@ def pin_authentication(pin):
             print("Invalid pin. Try again")
     return user_card_pin
 
-# display user's current balance
-current_balance = f"Your current balance is GHS"
-
 # call pin_authentication function
 pin_authentication()
+
+# define function for withdrawal
+def withdrawal():
+    global current_balance
+    amount = float(input("Enter the amount to withdraw here:\n"))
+    if amount <= 0:
+        print("Invalid entry. Enter correct amount")
+    if amount <= current_balance:
+        current_balance -= amount
+        print("withdrawal successful, please take your cash and card.")
+    else:
+        print("Insufficient balance")
 
 # define function for choices
 def choices():
@@ -53,24 +64,3 @@ def choices():
         print("Choose from the otions")
         
 choices()
-
-
-# define function for 
-# define function for withdrawal
-def withdrawal():
-    amount = float(input("Enter the amount to withdraw here:\n"))
-    if amount <= 0:
-        print("Invalid entry. Enter correct amount")
-    if amount <= current_balance:
-        current_balance -= amount
-        print("withdrawal successful, please take your cash and card.")
-    else:
-        print("Insufficient balance")
-
-
-
-
-
-
-
-
